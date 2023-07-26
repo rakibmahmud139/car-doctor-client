@@ -1,8 +1,9 @@
+import { space } from 'postcss/lib/list';
 import React from 'react';
 
 
-const BookingRows = ({ booking, handleDelete }) => {
-    const { _id, date, service, price, img } = booking;
+const BookingRows = ({ booking, handleDelete, handleBookingConfirm }) => {
+    const { _id, date, service, price, img, status } = booking;
 
 
 
@@ -30,7 +31,12 @@ const BookingRows = ({ booking, handleDelete }) => {
             <td>{date}</td>
             <td>${price}</td>
             <th>
-                <button className="btn btn-outline btn-accent btn-xs">Pending</button>
+                {
+                    status === 'confirm' ?
+                        <span className='text-accent font-bold'>Confirmed</span>
+                        :
+                        <button onClick={() => handleBookingConfirm(_id)} className="btn btn-outline btn-accent btn-xs">Please Confirm</button>
+                }
             </th>
         </tr>
     );
