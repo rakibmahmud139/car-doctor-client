@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
                     email: currentUser.email
                 }
                 // send jwt token in server site
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://cars-doctor-server-omega-olive.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

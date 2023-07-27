@@ -10,7 +10,7 @@ const Bookings = () => {
     const [bookings, setBookings] = useState([]);
     const navigate = useNavigate();
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://cars-doctor-server-omega-olive.vercel.app/bookings?email=${user?.email}`
 
     useEffect(() => {
         fetch(url, {
@@ -44,7 +44,7 @@ const Bookings = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
-            fetch(`http://localhost:5000/bookings/${id}`, {
+            fetch(`https://cars-doctor-server-omega-olive.vercel.app/bookings/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -68,7 +68,7 @@ const Bookings = () => {
 
     //update send data to server site
     const handleBookingConfirm = id => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://cars-doctor-server-omega-olive.vercel.app/bookings/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

@@ -27,7 +27,7 @@ const CheckOut = () => {
         }
 
         // Send data to server site
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://cars-doctor-server-omega-olive.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
