@@ -3,19 +3,33 @@ import { AuthContext } from '../../providers/AuthProvider';
 import BookingRows from './BookingRows';
 import Swal from 'sweetalert2';
 import { data } from 'autoprefixer';
+import { useNavigate } from 'react-router-dom';
 
 const Bookings = () => {
     const { user } = useContext(AuthContext);
-
     const [bookings, setBookings] = useState([]);
+    const navigate = useNavigate();
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('car-access-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [])
+            .then(data => {
+                if (!data.error) {
+                    setBookings(data)
+                }
+                else {
+                    // Logout and then navigate
+                    navigate('/')
+                }
+            })
+    }, [url, navigate])
 
 
 

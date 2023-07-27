@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import img from '../../../assets/images/login/login.svg'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import SocialLogin from '../shared/socialLogin/SocialLogin';
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
+
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -41,7 +43,7 @@ const SignUp = () => {
                                 </label>
                                 <input type="text" name='name' placeholder="name"
                                     required className="input input-bordered" />
-                            </div>
+                            </div >
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -53,18 +55,19 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="Confirm password"
+                                <input type="password" name='password' placeholder="Confirm password"
                                     required className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-accent" type="submit" value="Sign Up" />
                             </div>
-                        </form>
+                        </form >
                         <p className='my-4 text-center'>Have An Account? <Link className='text-accent font-bold' to='/login'>Login</Link></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <SocialLogin />
+                    </div >
+                </div >
+            </div >
+        </div >
     );
 };
 
